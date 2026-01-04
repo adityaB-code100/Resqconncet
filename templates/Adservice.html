@@ -98,11 +98,6 @@ function validateServiceForm() {
     isValid = false;
   }
 
-  if (!urlPattern.test(image)) {
-    document.getElementById("imageError").textContent =
-      "Please enter a valid image URL.";
-    isValid = false;
-  }
 
   if (firstAid.length < 10) {
     document.getElementById("aidError").textContent =
