@@ -13,114 +13,100 @@
 
     <form action="/add-service" method="POST" onsubmit="return validateServiceForm()" novalidate class="space-y-6">
 
+      <!-- Service Title -->
       <div>
-        <label for="serviceTitle" class="block text-sm font-medium text-gray-700 mb-2">
+        <label class="block text-sm font-medium text-gray-700 mb-2">
           <i class="fas fa-tag mr-2 text-blue-600"></i>Service Title
         </label>
-        <input type="text" 
-               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300" 
-               id="serviceTitle" 
-               name="serviceTitle" 
-               placeholder="Enter service title (e.g., Fire Department)"
+        <input type="text"
+               id="serviceTitle"
+               name="serviceTitle"
+               class="w-full px-4 py-3 border border-gray-300 rounded-lg"
+               placeholder="Enter service title"
                required>
         <span id="titleError" class="text-red-500 text-sm mt-1 block"></span>
       </div>
 
+      <!-- Service Image -->
       <div>
-        <label for="serviceImage" class="block text-sm font-medium text-gray-700 mb-2">
+        <label class="block text-sm font-medium text-gray-700 mb-2">
           <i class="fas fa-image mr-2 text-purple-600"></i>Service Image URL
         </label>
-        <input type="url" 
-               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300" 
-               id="serviceImage" 
-               name="serviceImage" 
+        <input type="url"
+               id="serviceImage"
+               name="serviceImage"
+               class="w-full px-4 py-3 border border-gray-300 rounded-lg"
                placeholder="https://example.com/image.jpg"
                required>
         <span id="imageError" class="text-red-500 text-sm mt-1 block"></span>
       </div>
 
+      <!-- Helpline (NO VALIDATION) -->
       <div>
-        <label for="helpline" class="block text-sm font-medium text-gray-700 mb-2">
+        <label class="block text-sm font-medium text-gray-700 mb-2">
           <i class="fas fa-phone mr-2 text-green-600"></i>Service Helpline
         </label>
-        <input type="tel" 
-               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300 no-spinner" 
-               id="helpline" 
-               name="helpline" 
-               placeholder="Enter 10-digit helpline number"
+        <input type="text"
+               id="helpline"
+               name="helpline"
+               class="w-full px-4 py-3 border border-gray-300 rounded-lg"
+               placeholder="Enter helpline number"
                required>
-        <span id="helplineError" class="text-red-500 text-sm mt-1 block"></span>
       </div>
 
+      <!-- First Aid -->
       <div>
-        <label for="firstAid" class="block text-sm font-medium text-gray-700 mb-2">
+        <label class="block text-sm font-medium text-gray-700 mb-2">
           <i class="fas fa-first-aid mr-2 text-red-600"></i>First Aid Instructions
         </label>
-        <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300" 
-                  id="firstAid" 
-                  name="firstAid" 
-                  rows="4" 
-                  placeholder="Provide detailed first aid instructions for this emergency type..."
+        <textarea id="firstAid"
+                  name="firstAid"
+                  rows="4"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg"
+                  placeholder="Provide first aid instructions"
                   required></textarea>
         <span id="aidError" class="text-red-500 text-sm mt-1 block"></span>
       </div>
 
       <div class="pt-4">
-        <button type="submit" 
-                class="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-800 transition duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl">
-          <i class="fas fa-save mr-2"></i>
-          Add Emergency Service
+        <button type="submit"
+                class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700">
+          <i class="fas fa-save mr-2"></i>Add Emergency Service
         </button>
       </div>
     </form>
   </div>
 </div>
 
-<style>
-/* Hide number input spinners */
-.no-spinner::-webkit-outer-spin-button,
-.no-spinner::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.no-spinner[type=number] {
-  -moz-appearance: textfield;
-}
-</style>
-
 <script>
 function validateServiceForm() {
   let isValid = true;
 
-  // Clear previous error messages
-  document.querySelectorAll('span[id$="Error"]').forEach(span => span.textContent = '');
+  document.querySelectorAll('span[id$="Error"]').forEach(
+    span => span.textContent = ''
+  );
 
   const title = document.getElementById("serviceTitle").value.trim();
   const image = document.getElementById("serviceImage").value.trim();
-  const helpline = document.getElementById("helpline").value.trim();
   const firstAid = document.getElementById("firstAid").value.trim();
 
-  const phonePattern = /^[6-9]\d{9}$/;
   const urlPattern = /^https?:\/\/.+\.(jpg|jpeg|png|gif|webp)$/i;
 
   if (title.length < 3) {
-    document.getElementById("titleError").textContent = "Service title must be at least 3 characters.";
+    document.getElementById("titleError").textContent =
+      "Service title must be at least 3 characters.";
     isValid = false;
   }
 
   if (!urlPattern.test(image)) {
-    document.getElementById("imageError").textContent = "Please enter a valid image URL (jpg, jpeg, png, gif, webp).";
-    isValid = false;
-  }
-
-  if (!phonePattern.test(helpline)) {
-    document.getElementById("helplineError").textContent = "Please enter a valid 10-digit Indian mobile number.";
+    document.getElementById("imageError").textContent =
+      "Please enter a valid image URL.";
     isValid = false;
   }
 
   if (firstAid.length < 10) {
-    document.getElementById("aidError").textContent = "First aid instructions must be at least 10 characters.";
+    document.getElementById("aidError").textContent =
+      "First aid instructions must be at least 10 characters.";
     isValid = false;
   }
 
