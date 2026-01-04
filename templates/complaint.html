@@ -1,0 +1,76 @@
+{% extends 'Admin.html' %}
+
+{% block content %}
+<div class="space-y-6">
+  <div class="flex items-center justify-between">
+    <h2 class="text-2xl font-bold text-gray-800">{{title}}</h2>
+    <div class="flex items-center space-x-2 text-sm text-gray-600">
+      <i class="fas fa-database"></i>
+      <span>{{ complaints|length }} total records</span>
+    </div>
+  </div>
+  
+  <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+    <div class="overflow-x-auto">
+      <table class="w-full">
+        <thead class="bg-gradient-to-r from-gray-800 to-gray-900 text-white">
+          <tr>
+            <th class="px-6 py-4 text-left text-sm font-semibold">Name</th>
+            <th class="px-6 py-4 text-left text-sm font-semibold">Contact</th>
+            <th class="px-6 py-4 text-left text-sm font-semibold">Emergency Type</th>
+            <th class="px-6 py-4 text-left text-sm font-semibold">Location</th>
+            <th class="px-6 py-4 text-left text-sm font-semibold">Description</th>
+            <th class="px-6 py-4 text-left text-sm font-semibold">Timestamp</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          {% for entry in complaints %}
+          <tr class="hover:bg-gray-50 transition-colors duration-200">
+            <td class="px-6 py-4 text-sm font-medium text-gray-900">{{ entry.name }}</td>
+            <td class="px-6 py-4 text-sm text-gray-700">
+              <div class="flex items-center">
+                <i class="fas fa-phone text-green-600 mr-2"></i>
+                {{ entry.contact }}
+              </div>
+            </td>
+            <td class="px-6 py-4 text-sm">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                <i class="fas fa-exclamation-triangle mr-1"></i>
+                {{ entry.emergency_type }}
+              </span>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700">
+              <div class="flex items-center">
+                <i class="fas fa-map-marker-alt text-blue-600 mr-2"></i>
+                {{ entry.location }}
+              </div>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-700 max-w-xs">
+              <div class="truncate" title="{{ entry.description }}">
+                {{ entry.description }}
+              </div>
+            </td>
+            <td class="px-6 py-4 text-sm text-gray-500">
+              <div class="flex items-center">
+                <i class="fas fa-clock mr-2"></i>
+                {{ entry.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    
+    {% if not complaints %}
+    <div class="text-center py-12">
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4">
+        <i class="fas fa-inbox text-2xl text-gray-400"></i>
+      </div>
+      <h3 class="text-lg font-medium text-gray-900 mb-2">No complaints found</h3>
+      <p class="text-gray-500">No emergency complaints have been submitted yet.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disaster Alerts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'jakarta': ['Plus Jakarta Sans', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#4A90E2',
+                        'secondary': '#2c3e50',
+                        'danger': '#e74c3c',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .alert-gradient {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 50%, #a93226 100%);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .alert-card {
+            background: rgba(255, 248, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(231, 76, 60, 0.2);
+        }
+    </style>
+</head>
+<body class="font-jakarta text-sm bg-gradient-to-br from-red-50 via-orange-50 to-pink-100 text-secondary p-4 min-h-screen">
+    <!-- Global Alerts Header -->
+    <div class="glass-card rounded-2xl shadow-xl mb-4 overflow-hidden">
+        <div class="alert-gradient p-4 text-white relative">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-0 right-0 w-20 h-20 bg-white rounded-full -translate-y-10 translate-x-10"></div>
+                <div class="absolute bottom-0 left-0 w-16 h-16 bg-white rounded-full translate-y-8 -translate-x-8"></div>
+            </div>
+            
+            <div class="relative flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm animate-float">
+                        <i class="fas fa-exclamation-triangle text-lg"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold">Global Alerts</h1>
+                        <p class="text-red-100 text-xs">Disaster Monitoring</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                    <span class="text-xs text-red-100">Active</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alerts List -->
+    <div class="space-y-3">
+        {% for event in events %}
+        <div class="alert-card rounded-2xl shadow-lg border-l-4 border-red-500 overflow-hidden hover:shadow-xl transition-all duration-300">
+            <!-- Alert Header -->
+            <div class="bg-gradient-to-r from-red-500 to-orange-500 p-3 text-white">
+                <div class="flex items-center space-x-2">
+                    <div class="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-fire text-xs"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-bold text-sm leading-tight">{{ event.title }}</h3>
+                    </div>
+                    <div class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                </div>
+            </div>
+            
+            <!-- Alert Content -->
+            <div class="p-3 space-y-2">
+                <!-- Category -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-5 h-5 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-tag text-blue-600 text-xs"></i>
+                    </div>
+                    <span class="text-xs font-medium text-gray-600">Category:</span>
+                    <span class="text-xs text-blue-600 font-semibold">{{ event.category }}</span>
+                </div>
+                
+                <!-- Date -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-5 h-5 bg-green-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-calendar text-green-600 text-xs"></i>
+                    </div>
+                    <span class="text-xs font-medium text-gray-600">Date:</span>
+                    <span class="text-xs text-green-600 font-semibold">{{ event.date }}</span>
+                </div>
+                
+                <!-- Coordinates -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-5 h-5 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-map-marker-alt text-purple-600 text-xs"></i>
+                    </div>
+                    <span class="text-xs font-medium text-gray-600">Location:</span>
+                    <span class="text-xs text-purple-600 font-semibold">{{ event.coordinates }}</span>
+                </div>
+            </div>
+            
+            <!-- Alert Footer -->
+            <div class="bg-gradient-to-r from-gray-50 to-gray-100 px-3 py-2 border-t border-gray-200">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></div>
+                        <span class="text-xs text-gray-600">Active Alert</span>
+                    </div>
+                    <div class="text-xs text-gray-500">ID: {{ loop.index }}</div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <!-- No Alerts State -->
+        <div class="glass-card rounded-2xl shadow-lg p-6 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+                <i class="fas fa-shield-alt text-2xl text-green-600"></i>
+            </div>
+            <h3 class="text-base font-bold text-gray-800 mb-2">All Clear</h3>
+            <p class="text-sm text-gray-600 mb-2">No recent disaster alerts found</p>
+            <div class="flex items-center justify-center space-x-2 text-xs text-green-600">
+                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span>System monitoring active</span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Footer Info -->
+    <div class="mt-4 glass-card rounded-2xl p-3">
+        <div class="text-center">
+            <div class="flex items-center justify-center space-x-2 text-xs text-gray-600">
+                <i class="fas fa-satellite text-blue-500"></i>
+                <span>Data from NASA & Global Monitoring Systems</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

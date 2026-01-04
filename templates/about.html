@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block title %}About - ResQConnect{% endblock %}
+
+{% block body %}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-bold text-center text-green-700 mb-8">About ResQConnect</h1>
+        
+        <div class="prose max-w-none mb-10">
+            <p class="text-lg mb-6">
+                ResQConnect is a emergency assistance platform designed to connect people in distress with immediate help. 
+                Whether it's a medical crisis, roadside accident, fire outbreak, or natural disaster, ResQConnect ensures you're never alone.
+            </p>
+            
+            <p class="text-lg mb-6">
+                Our platform provides real-time disaster alerts, first aid information, emergency complaint registration, 
+                and access to critical emergency services through a single, user-friendly interface.
+            </p>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-6 mb-10">
+            <h2 class="text-2xl font-semibold text-center text-blue-600 mb-6">Meet the Developer</h2>
+            
+            <div class="flex flex-col items-center">
+                <div class="bg-gray-200 border-2 border-dashed rounded-xl w-24 h-24 mb-4"></div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Aditya Bandewar</h3>
+                <p class="text-gray-600 mb-6">Full Stack Developer</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-2xl">
+                    <a href="https://www.linkedin.com/in/aditya-bandewar-393231326/" 
+                       target="_blank" 
+                       class="flex flex-col items-center justify-center p-4 bg-blue-100 rounded-lg hover:bg-blue-200 transition-colors duration-300">
+                        <i class="fab fa-linkedin text-3xl text-blue-700 mb-2"></i>
+                        <span class="font-medium text-blue-800">LinkedIn</span>
+                    </a>
+                    
+                    <a href="https://github.com/adityaB-code100" 
+                       target="_blank" 
+                       class="flex flex-col items-center justify-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors duration-300">
+                        <i class="fab fa-github text-3xl text-gray-700 mb-2"></i>
+                        <span class="font-medium text-gray-800">GitHub</span>
+                    </a>
+                    
+                    <a href="https://leetcode.com/u/adityabandewar206/" 
+                       target="_blank" 
+                       class="flex flex-col items-center justify-center p-4 bg-orange-100 rounded-lg hover:bg-orange-200 transition-colors duration-300">
+                        <i class="fas fa-code text-3xl text-orange-600 mb-2"></i>
+                        <span class="font-medium text-orange-700">LeetCode</span>
+                    </a>
+                    
+                    <a href="mailto:adityabandewar206@gmail.com" 
+                       class="flex flex-col items-center justify-center p-4 bg-red-100 rounded-lg hover:bg-red-200 transition-colors duration-300">
+                        <i class="fas fa-envelope text-3xl text-red-600 mb-2"></i>
+                        <span class="font-medium text-red-700">Email</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                <h3 class="text-xl font-semibold text-green-700 mb-3">Our Mission</h3>
+                <p class="text-gray-700">
+                    To provide timely and critical support during disasters and emergencies through technology-driven solutions.
+                </p>
+            </div>
+            
+            <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                <h3 class="text-xl font-semibold text-blue-700 mb-3">Our Vision</h3>
+                <p class="text-gray-700">
+                    To create a world where no one faces an emergency alone, with immediate access to help and resources.
+                </p>
+            </div>
+            
+            <div class="bg-purple-50 p-6 rounded-lg border border-purple-200">
+                <h3 class="text-xl font-semibold text-purple-700 mb-3">Our Values</h3>
+                <p class="text-gray-700">
+                    Compassion, Innovation, Reliability, and Community-driven approach to emergency response.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
