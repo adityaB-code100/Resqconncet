@@ -1,0 +1,143 @@
+
+{% extends "layout.html" %}
+{% block body %}
+
+
+<style>
+  .home-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    
+}
+
+.home-title {
+    font-size: 36px;
+    color: #025f44;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    background-color: #ffffff;
+
+}
+
+.highlighted {
+    color: #0077ff;
+        background-color: #ffffff;
+
+}
+
+.home-subtext {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+        background-color: #ffffff;
+
+}
+
+.features-list {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    padding-left: 0;
+    list-style: none;
+    font-size: 17px;
+        background-color: #ffffff;
+
+}
+
+.features-list li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+        background-color: #ffffff;
+
+}
+
+.action-button {
+    margin-top: 2rem;
+        background-color: #ffffff;
+
+}
+
+.btn-emergency {
+    background-color: #28a745;
+    color: white;
+    padding: 0.9rem 2rem;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+    transition: background-color 0.3s ease;
+    
+}
+
+.btn-emergency:hover {
+    background-color: #218838;
+}
+
+</style>
+
+<div class="home-container">
+
+    <h1 class="home-title">Welcome to <span class="highlighted">ResqConnect</span></h1>
+
+    <p class="home-subtext">
+        ResqConnect is your one-stop AI-powered emergency assistance platform, built to connect
+        people in distress with immediate help. Whether it's a medical crisis, roadside accident, fire outbreak, or
+        natural disaster, ResqConnect ensures you’re never alone.
+    </p>
+
+    <ul class="features-list">
+        <li>✨ Report emergencies with accurate location</li>
+        <li>🧠 Get instant first aid guidance with AI</li>
+        <li>🌍 View global alerts from NASA and live weather data</li>
+        <li>🧑‍💬 Use our chatbot for real-time assistance</li>
+    </ul>
+
+    <div class="action-button">
+        <a href="/register" class="btn-emergency">🚨 Report an Emergency</a>
+    </div>
+
+</div>
+
+<!-- Chat Button -->
+<button id="chatToggleBtn" 
+    style="position: fixed; bottom: 20px; right: 20px; 
+           width: 50px; height: 50px; border-radius: 50%; 
+           border: none; background-color: #075e54; 
+           color: white; font-size: 24px; cursor: pointer;
+           box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+    💬
+</button>
+
+<!-- Chat Iframe -->
+<iframe
+  id="chatIframe"
+  src="{{ url_for('static', filename='index.html') }}"
+  style="width: 400px; height: 400px; border: none; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+         position: fixed; bottom: 80px; right: 20px; display: none; z-index: 1000;"
+  title="Emergency Assistance"
+  allow="clipboard-write"
+></iframe>
+
+<script>
+  const toggleBtn = document.getElementById('chatToggleBtn');
+  const chatIframe = document.getElementById('chatIframe');
+
+  toggleBtn.addEventListener('click', () => {
+    chatIframe.style.display = (chatIframe.style.display === 'none' || chatIframe.style.display === '') 
+        ? 'block' 
+        : 'none';
+  });
+</script>
+
+{% endblock %}
+

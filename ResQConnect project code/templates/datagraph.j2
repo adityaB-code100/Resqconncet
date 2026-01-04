@@ -1,0 +1,27 @@
+{% extends 'admin.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Emergency Type Frequency</h2>
+  <div id="type-chart"></div>
+
+  <h2 class="mt-5">Complaints Per Day</h2>
+  <div id="date-chart"></div>
+
+  <h2 class="mt-5">Emergencies by Location</h2>
+  <div id="location-chart"></div>
+</div>
+
+<!-- Plotly JS -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+  var type_graph = {{ graphJSON_type | safe }};
+  Plotly.newPlot('type-chart', type_graph.data, type_graph.layout);
+
+  var date_graph = {{ graphJSON_date | safe }};
+  Plotly.newPlot('date-chart', date_graph.data, date_graph.layout);
+
+  var location_graph = {{ graphJSON_location | safe }};
+  Plotly.newPlot('location-chart', location_graph.data, location_graph.layout);
+</script>
+{% endblock %}

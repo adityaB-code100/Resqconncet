@@ -1,0 +1,78 @@
+{% extends 'admin.html' %}
+
+{% block content %}
+<!-- Include Bootstrap CSS -->
+
+<div class="container mt-5">
+  <h2 class="mb-4">Add New Emergency Service</h2>
+  <form action="/add-service" method="POST"  onsubmit="return validateServiceForm()" novalidate>
+
+    <div class="mb-3">
+      <label for="serviceTitle" class="form-label">Service Title</label>
+      <input type="text" class="form-control" id="serviceTitle" name="serviceTitle" required>
+      <span id="titleError" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+      <label for="serviceImage" class="form-label">Service Image Url</label>
+      <input type="text" class="form-control" id="serviceImage" name="serviceImage" accept="image/*" required>
+      <span id="imageError" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+      <label for="helpline" class="form-label">Service Helpline</label>
+      <input type="Number" class="form-control" id="helpline" name="helpline" required>
+      <span id="helplineError" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+      <label for="firstAid" class="form-label">First Aid Instructions</label>
+      <textarea class="form-control" id="firstAid" name="firstAid" rows="4" required></textarea>
+      <span id="aidError" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Service</button>
+  </form>
+</div>
+<style>
+    /* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+</style>
+
+<!-- Bootstrap JS -->
+
+<!-- JavaScript Validation -->
+<script>
+function validateServiceForm() {
+  let isValid = true;
+
+  // Clear previous error messages
+  document.querySelectorAll('span[id$="Error"]').forEach(span => span.textContent = '');
+
+  const title = document.getElementById("serviceTitle").value.trim();
+  const firstAid = document.getElementById("firstAid").value.trim();
+
+  const phonePattern = /^[6-9]\d{9}$/;
+
+  if (title.length < 3) {
+    document.getElementById("titleError").textContent = "Service title must be at least 3 characters.";
+    isValid = false;
+  }
+
+
+  if (firstAid.length < 10) {
+    document.getElementById("aidError").textContent = "First aid instructions must be at least 10 characters.";
+    isValid = false;
+  }
+
+  return isValid;
+}
+</script>
+
+{% endblock %}

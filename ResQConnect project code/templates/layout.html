@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}ResQConnect{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Plus+Jakarta+Sans:ital@0;1&display=swap" rel="stylesheet">
+    <!-- In layout.html head section -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Your CSS File -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="title">
+            <a href="/home">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="ResqConnect Logo" class="logo">
+            </a>
+            <h1 class="telement te2">ResqConnect</h1>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="blog">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="weather-frame side-card">
+                <h2 style="color: #0077ff;">🌤️ Today’s Weather in India</h2>
+                <iframe src="{{ url_for('show_weather') }}" width="100%" height="250px" style="border: none;"></iframe>
+            </div>     
+            
+            <div class="alerts-frame side-card">
+                <h2 style="color: #0077ff;">🌍 Global Disaster Alerts</h2>
+                <iframe src="{{ url_for('show_recent_global_alerts') }}" width="100%" height="250px" style="border: none;"></iframe>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="tagbar">
+                <div class="tagline" id="floatingSentence" >
+                    <a href="/service">Loading...</a>
+                </div>
+
+                <!-- Navigation Bar -->
+                <nav class="navbar">
+                    <a href="/home">Home</a>
+                    <a href="/register">Register Complaint</a>
+                    <a href="/service">Services</a>
+                    <a href="/contactus">Contact us</a>
+                <a href="/info/resqconnect-one-stop-emergency-service">About</a>
+                </nav>
+            </div>
+
+            <!-- Dynamic Body Content -->
+            <section class="bodymain">
+                {% block body %} {% endblock %}
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+  <div class="foot">
+    <a href="/info/copyright">Copyright</a>
+    <a href="/info/disclaimer">Disclaimer</a>
+    <a href="/info/privacy-policy">Privacy Policy</a>
+    <a href="/info/terms-and-conditions">Terms and Conditions</a>
+    <a href="/info/feedback">Feedback</a>
+    <a href="/info/help">Help</a>
+  </div>
+
+<div class="copy">
+            <p>&copy; 2025 ResQConnect. All rights reserved.<br>Developed By <br>&#9733;Aditya B &#9733;</p>
+            
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="service firstaid-out">
+
+    <div>
+    <ol class="firstaid">
+        <h1>First Aid</h1>
+        {% for p in firstaid_list %}
+        <li>{{p}}</li>
+        {% endfor %}
+
+    </ol>
+
+    </div>
+
+
+
+
+
+</div>
+{% endblock %}

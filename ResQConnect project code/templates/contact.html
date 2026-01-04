@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="form-container">
+    <h2>Contact us</h2>
+    <form id="contactForm" action="/c" method="POST" onsubmit="return validateContactForm()" novalidate>
+
+        <div>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" value="{{ request.form.get('name', '') }}" required>
+            <span id="nameError" style="color:red"></span>
+        </div>
+
+        <div>
+            <label for="contact">Contact Number</label>
+            <input type="tel" id="contact" name="contact" value="{{ request.form.get('contact', '') }}" required>
+            <span id="contactError" style="color:red"></span>
+        </div>
+
+        <div>
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" value="{{ request.form.get('location', '') }}" required>
+            <span id="locationError" style="color:red"></span>
+        </div>
+
+        <div>
+            <label for="description">Contact Request Description</label>
+            <textarea id="description" name="description" rows="4" cols="60" required>{{ request.form.get('description', '') }}</textarea>
+            <span id="descriptionError" style="color:red"></span>
+        </div>
+
+        <div>
+            <button type="submit">Submit Contact Request</button>
+        </div>
+         <div id="successAlert" class="alert alert-success d-none" role="alert">
+         Form submitted successfully!
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
+

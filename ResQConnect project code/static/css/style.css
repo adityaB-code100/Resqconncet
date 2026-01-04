@@ -1,0 +1,469 @@
+/* Global Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(213, 204, 204);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+
+}
+.plus-jakarta-sans-1 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .oswald-1 {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Title Header */
+.title {
+    position: relative;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.5rem 1rem 0.5rem 20px;
+    background-color: rgba(176, 16, 16, 0.45);
+    border: 1px solid black;
+}
+
+.logo {
+    background-color: transparent;
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.telement {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    background-color: transparent;
+    padding: 0.5rem;
+}
+
+.telement.te2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 2rem;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+/* Tagline Scroller */
+.tagline {
+    width: 100%;
+    height: 3rem;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+.tagline a {
+    position: absolute;
+    white-space: nowrap;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.tagline a:hover {
+    text-decoration: underline;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #e8c9c9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-top: 0.8px solid black;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+    margin: 0 10px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+.navbar a:hover {
+    background-color: blanchedalmond;
+    font-size: large;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+footer {
+    background-color: #5a4c4c;
+    color: white;
+    padding: 1rem;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    height: 10rem;
+    margin-top: 0.5rem;
+    border-radius: 0 0 10px 10px;
+    border-top: solid black 2px;
+}
+
+.foot {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 1rem;
+    background-color: transparent;
+}
+
+.foot a {
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+}
+
+.foot a:hover {
+    text-decoration: underline;
+}
+
+.copy {
+    background-color: transparent;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.copy p {
+    margin: 0;
+    background-color: transparent;
+}
+
+/* Layouts */
+.blog {
+    display: flex;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: gainsboro;
+    border-right: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+main {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.01rem;
+    padding-bottom: 12rem;
+}
+
+/* Cards Section */
+.service {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.card {
+    width: 10rem;
+    height: 12rem;
+    background-color: #f5dada;
+    border: 2px solid #333;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover {
+    background-color: whitesmoke;
+    transform: scale(1.05);
+}
+
+.card a {
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+}
+
+.card img {
+    height: 3rem;
+    width: 3rem;
+    margin-bottom: 0.5rem;
+    object-fit: cover;
+    border-radius: 5%;
+    background-color: transparent;
+}
+
+.card p {
+    background-color: transparent;
+}
+
+/* Form Styling */
+.form-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background-color: transparent;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-container p {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2d2d2d;
+    margin-bottom: 2rem;
+}
+
+form div {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+    color: #333;
+}
+
+input[type="text"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #040101;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* First Aid Styling */
+.firstaid {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.firstaid li {
+    margin-left: 75px;   /* adjust as needed */
+    line-height: 1.6;  
+}
+.firstaid h1 {
+    margin-left: 75px;   /* adjust as needed */
+    line-height: 1.6; 
+align-items: center;
+ }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .title, .navbar, .foot {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .sidebar, main {
+        width: 100%;
+    }
+
+    .form-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .card {
+        width: 100%;
+        height: auto;
+    }
+}
+/* Global Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Title Header */
+.title {
+    background-color: #2c3e50;
+    color: white;
+    border-bottom: 2px solid #4A90E2;
+}
+
+.logo,
+.telement,
+.telement.te2 {
+    background-color: transparent;
+    color: white;
+}
+
+/* Tagline Scroller */
+.tagline {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+
+.tagline a {
+    color: #4A90E2;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #ffffff;
+    border-top: 1px solid #ccc;
+}
+
+.navbar a {
+    color: #2c3e50;
+}
+
+.navbar a:hover {
+    background-color: #4A90E2;
+    color: white;
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.foot,
+.copy {
+    background-color: transparent;
+    color: white;
+}
+
+/* Layouts */
+.sidebar {
+    background-color: #e3e3e3;
+}
+
+main {
+    background-color: #ffffff;
+}
+
+/* Cards Section */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+}
+
+.card:hover {
+    background-color: #f0f8ff;
+}
+
+/* Form Styling */
+.form-container {
+    background-color: #ffffff;
+}
+
+.form-container p {
+    color: #2c3e50;
+}
+
+label {
+    color: #333;
+}
+
+input[type="text"],
+input[type="tel"],
+textarea {
+    border: 1px solid #ccc;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #4A90E2;
+}
+
+button[type="submit"] {
+    background-color: #4A90E2;
+}
+
+button[type="submit"]:hover {
+    background-color: #357ABD;
+}
+
+/* First Aid Styling */
+.firstaid li,
+.firstaid h1 {
+    color: #2c3e50;
+}
+
+/* Responsive Design remains same */

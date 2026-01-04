@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Motivational AJAX</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+            color: #333;
+            text-align: center;
+            padding-top: 100px;
+        }
+        input {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 260px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 12px 22px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background-color: #81ecec;
+            color: #2d3436;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button:hover {
+            background-color: #74b9ff;
+        }
+        #result {
+            margin-top: 30px;
+            font-size: 24px;
+            color: #0984e3;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function sendData() {
+            var name = document.getElementById("name").value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "process.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    document.getElementById("result").innerHTML = xhr.responseText;
+                }
+            };
+
+            xhr.send("name=" + encodeURIComponent(name));
+        }
+    </script>
+</head>
+<body>
+    <h2>🌈 Get Your Daily Dose of Motivation 🌈</h2>
+    <input type="text" id="name" placeholder="Enter your name">
+    <button onclick="sendData()">Motivate Me</button>
+    <div id="result"></div>
+</body>
+</html>

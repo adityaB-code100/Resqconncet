@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prime Number Finder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    input {
+      margin: 10px;
+      padding: 8px;
+      width: 100px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      background: #007bff;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .result {
+      margin-top: 20px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Prime Number Finder</h2>
+    <input type="number" id="start" placeholder="Start" />
+    <input type="number" id="end" placeholder="End" />
+    <br />
+    <button onclick="findPrimes()">Find Primes</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function isPrime(num) {
+      if (num < 2) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    }
+
+    function findPrimes() {
+      const start = parseInt(document.getElementById('start').value);
+      const end = parseInt(document.getElementById('end').value);
+      const resultDiv = document.getElementById('result');
+
+      if (isNaN(start) || isNaN(end) || start > end) {
+        resultDiv.innerHTML = `<p style="color:red;">Please enter a valid range.</p>`;
+        return;
+      }
+
+      let primes = [];
+      for (let i = start; i <= end; i++) {
+        if (isPrime(i)) primes.push(i);
+      }
+
+      resultDiv.innerHTML = `<strong>Prime Numbers:</strong><br>${primes.join(', ') || 'No primes in this range'}`;
+    }
+  </script>
+</body>
+</html>

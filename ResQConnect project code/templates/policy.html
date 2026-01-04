@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block body %}
+<!-- COPYRIGHT -->
+<section class="legal-section">
+  <h1>{{ info.title }}</h1>
+  <p>{{ info.description }}</p>
+
+  <!-- Go Back and Home Buttons -->
+  <div class="button-group">
+<button class="back-btn" onclick="location.href='/'">← Back to Home</button>
+  </div>
+</section>
+
+<style>
+.legal-section {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: transparent;
+    box-shadow: 0 20px 10px rgba(2, 2, 2, 0.06);
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+}
+
+.legal-section h1 {
+    font-size: 26px;
+    color: #004aad;
+    margin-bottom: 20px;
+    font-weight: 700;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.legal-section p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.button-group {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.back-btn {
+    background-color: #004aad;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #003580;
+}
+
+.home-link {
+    color: #0077cc;
+    text-decoration: underline;
+    font-size: 14px;
+    align-self: center;
+}
+</style>
+{% endblock %}

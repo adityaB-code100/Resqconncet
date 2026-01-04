@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>India Weather</title>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            color: #2c3e50;
+            padding: 20px;
+        }
+
+        .weather-box {
+            border-left: 6px solid #4A90E2;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .title {
+            color: #4A90E2;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .weather-box p {
+            margin: 8px 0;
+            font-size: 15px;
+        }
+
+        strong {
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="weather-box">
+        <div class="title">Today's Weather (New Delhi)</div>
+        <p><strong>Temperature:</strong> {{ weather.temperature }} °C</p>
+        <p><strong>Wind Speed:</strong> {{ weather.windspeed }} km/h</p>
+        <p><strong>Wind Direction:</strong> {{ weather.winddirection }}°</p>
+        <p><strong>Reported at:</strong> {{ weather.time }}</p>
+    </div>
+</body>
+</html>

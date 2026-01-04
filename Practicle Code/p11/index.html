@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Search with AJAX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            padding: 40px;
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #0984e3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 60%;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        #result {
+            margin-top: 30px;
+        }
+    </style>
+    <script>
+        function searchStudent() {
+            var query = document.getElementById("search").value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "search.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhr.onload = function () {
+                document.getElementById("result").innerHTML = xhr.responseText;
+            };
+
+            xhr.send("query=" + encodeURIComponent(query));
+        }
+    </script>
+</head>
+<body>
+    <h2>🔍 Search Student Records</h2>
+    <input type="text" id="search" placeholder="Enter name or roll number">
+    <button onclick="searchStudent()">Search</button>
+    <div id="result"></div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="service">
+
+{% for card in cards %}
+
+<div class="card">
+    <a href="/service/{{card._id}}" class="card-in">
+        <p>{{card.title}}</p>
+        <img src="{{card.image_url}}" alt="{{card.Emergency}}">
+        <p>Call {{card.number}}</p>
+    </a>
+</div>
+
+{% endfor %}
+
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,79 @@
+/* Apply base font and background */
+body {
+    background-color: #e0f7fa;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* Heading styles */
+h1 {
+    color: #01579b;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #0277bd;
+    margin-top: 30px;
+    font-size: 28px;
+}
+
+/* Paragraphs and emphasis */
+.highlight {
+    font-style: italic;
+    color: #004d40;
+    font-size: 18px;
+}
+
+.underline {
+    text-decoration: underline;
+    color: #00695c;
+    font-size: 18px;
+}
+
+/* Image styling */
+img {
+    border: 3px solid #0288d1;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 6rem;
+    width: 6rem;
+}
+
+img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Go to Top link styling */
+a[href="#top"] {
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 16px;
+    color: #006064;
+    text-decoration: none;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+a[href="#top"]:hover {
+    text-decoration: underline;
+}
+
+/* General links */
+a {
+    color: #0277bd;
+    font-weight: bold;
+}
+
+/* Paragraph alignment */
+p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 16px;
+}

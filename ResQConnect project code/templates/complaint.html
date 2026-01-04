@@ -1,0 +1,33 @@
+{% extends 'admin.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-3">{{title}}</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>Emergency Type</th>
+          <th>Location</th>
+          <th>Description</th>
+          <th>Timestamp</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for entry in complaints %}
+        <tr>
+          <td>{{ entry.name }}</td>
+          <td>{{ entry.contact }}</td>
+          <td>{{ entry.emergency_type }}</td>
+          <td>{{ entry.location }}</td>
+          <td>{{ entry.description }}</td>
+          <td>{{ entry.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
