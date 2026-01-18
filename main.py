@@ -190,6 +190,9 @@ def api_alerts():
 # --------------------------------------------------
 # ERROR HANDLERS
 # --------------------------------------------------
+@app.route("/health")
+def health():
+    return "OK", 200
 
 @app.errorhandler(404)
 def page_not_found(e):
